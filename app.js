@@ -5,32 +5,103 @@ var one = $('#one');
 var dos = $('.dos');
 var trefle = $(".trefle");
 var array = [];
+var array2 = [];
+var shufflearray = [];
 var cmpt=0
+
+var val1 = $('#dos1');
+var val2 = $('#dos2');
+var val3 = $('#dos3');
+var val4 = $('#dos4');
+var val5 = $('#dos5');
+var val6 = $('#dos6');
+var val7 = $('#dos7');
+var val8 = $('#dos8');
+
+
+shufflearray.push(val1);
+shufflearray.push(val2);
+shufflearray.push(val3);
+shufflearray.push(val4);
+shufflearray.push(val5);
+shufflearray.push(val6);
+shufflearray.push(val7);
+shufflearray.push(val8);
+
+
+
+function shuffle(){
+
+	var j = 0;
+	var valI = '';
+	var valJ = valI;
+	var l = shufflearray.length - 1;
+
+	while(l > -1){
+		j = Math.floor(Math.random() * l);
+		valI = shufflearray[l];
+		valJ = shufflearray[j];
+		shufflearray[l] = valJ;
+		shufflearray[j] = valI;
+		l = l - 1;
+
+	}
+
+	return shufflearray;
+
+};
+
+shuffle();
+$('#carte').hide();
+$('#one').html(shufflearray);
 
 
 $(".dos").click(function(){
 	var val = $(this).data("valeur");
-	console.log(val);
+	
 
-	array.push(val)
-	console.log(array)
+	
 
-	$(this).attr("src", val);
-	console.log(this);
+	var src = $(this).attr("src", val);
+	array.push(val);
+	array2.push(src);
+
+	
+	
 	cmpt++;
 
-});
+	// for(i=0; i<array.length; i++){
 
-for(i=0; i<array.length; i++){
+		if(cmpt%2==0){
+			if(array[array.length-1]!=array[array.length-2]){
+				console.log("C'est pas pareil !");
 
-	if(cmpt==2){
-		if(array[0]!=array[1]){
-			this.show();
-			console.log(this);
+				//setTimeout(function(){
+					array2[array.length-1].attr("src", "dos.png");
+					array2[array.length-2].attr("src", "dos.png");
+
+				//}, 1000);
+
+			// array = [];
+
+			console.log(array[array.length-1]);
+			// console.log(array[i]);
+			// console.log(array2)
 		}
-	}
+
+		else {
+			console.log(array[array.length-2]);
+			console.log(array[array.length-1]);
+		}
+
+		
+		
+	// }
 
 }
+});
+console.log(array)
+
 // var image = new Image();
 // var image2 = new Image();
 // var image3 = new Image();
@@ -41,7 +112,7 @@ for(i=0; i<array.length; i++){
 // var image8 = new Image();
 
 
-	
+
 //     image.src = 'astrefle.png';
 //     array.push(image);
 //     image2.src = 'ascarreau.png';
@@ -69,7 +140,7 @@ for(i=0; i<array.length; i++){
 // // {name : 'ascoeur', image : 'ascoeur.png' }
 // // ];
 
- 
+
 
 
 // jeu.hide();
@@ -86,8 +157,8 @@ for(i=0; i<array.length; i++){
 // });
 
 
-		
-	
+
+
 // function shuffle(){
 
 //    	var j = 0;
